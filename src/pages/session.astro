@@ -1,0 +1,15 @@
+---
+// Astro sessions on Cloudflare store data in the KV binding named SESSION.
+const visits = ((await Astro.session?.get('visits')) ?? 0) + 1;
+Astro.session?.set('visits', visits);
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Session test</title>
+  </head>
+  <body>
+    <h1>Session test</h1>
+    <p>Visits this session: {visits}</p>
+  </body>
+</html>
