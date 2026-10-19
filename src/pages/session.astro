@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const previous = (await Astro.session?.get<number>("pageViews")) ?? 0;
+const pageViews = previous + 1;
+await Astro.session?.set("pageViews", pageViews);
+
+const apiPath = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/session`;
+---
+
+<Layout title="Session counter">
+  <main class="mx-auto flex max-w-xl flex-col gap-4 p-8">
+    <h1 class="text-2xl font-semibold">Session counter</h1>
+    <p class="text-lg">
+      You've loaded this page <strong>{pageViews}</strong>
+      {pageViews === 1 ? "time" : "times"} in this session.
+    </p>
+    <p class="text-sm text-gray-600">
+      The API endpoint keeps its own count:
+      <a class="underline" href={apiPath}>{apiPath}</a>
+    </p>
+  </main>
+</Layout>

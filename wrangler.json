@@ -14,7 +14,8 @@
   ],
   "kv_namespaces": [
     { "binding": "SESSIONS", "id": "local" },
-    { "binding": "FLAGS", "id": "local-flags" }
+    { "binding": "FLAGS", "id": "local-flags" },
+    { "binding": "SESSION", "id": "SESSION" }
   ],
   "r2_buckets": [
     { "binding": "MEDIA", "bucket_name": "media" }
